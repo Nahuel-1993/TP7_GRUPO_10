@@ -36,7 +36,9 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:Label ID="lblTitulo" runat="server" Font-Bold="True" Font-Size="25pt" Text="Listado de sucursales"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
@@ -66,7 +68,7 @@
                     <td>&nbsp;</td>
                     <td>
                         <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3">
-                            <AlternatingItemTemplate>
+                            <%--<AlternatingItemTemplate>
                                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
                                     <br />DescripcionSucursal:
@@ -74,7 +76,7 @@
                                     <br />URL_Imagen_Sucursal:
                                     <asp:Label ID="URL_Imagen_SucursalLabel" runat="server" Text='<%# Eval("URL_Imagen_Sucursal") %>' />
                                     <br /></td>
-                            </AlternatingItemTemplate>
+                            </AlternatingItemTemplate>--%>
                             <EditItemTemplate>
                                 <td runat="server" style="background-color: #999999;">NombreSucursal:
                                     <asp:TextBox ID="NombreSucursalTextBox" runat="server" Text='<%# Bind("NombreSucursal") %>' />
@@ -117,12 +119,12 @@
                                     <br /></td>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <td runat="server" style="background-color: #E0FFFF;color: #333333;">NombreSucursal:
+                                <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre Sucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
-                                    <br />DescripcionSucursal:
+                                    <br />Descripcion Sucursal:
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
-                                    <br />URL_Imagen_Sucursal:
-                                    <asp:Label ID="URL_Imagen_SucursalLabel" runat="server" Text='<%# Eval("URL_Imagen_Sucursal") %>' />
+                                    <br />Imagen:
+                                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
                                     <br /></td>
                             </ItemTemplate>
                             <LayoutTemplate>
