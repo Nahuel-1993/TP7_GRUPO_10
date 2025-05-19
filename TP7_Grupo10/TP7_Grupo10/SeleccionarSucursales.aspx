@@ -13,6 +13,13 @@
         .auto-style2 {
             width: 187px;
         }
+        .auto-style3 {
+            width: 187px;
+            height: 47px;
+        }
+        .auto-style4 {
+            height: 47px;
+        }
     </style>
 </head>
 <body>
@@ -50,11 +57,13 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style3">
+                        <asp:SqlDataSource ID="SqDS_Provincias" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursales_Provincias %>" SelectCommand="SELECT [Id_Provincia], [DescripcionProvincia] FROM [Provincia]"></asp:SqlDataSource>
+                        </td>
+                    <td class="auto-style4"></td>
+                    <td class="auto-style4"></td>
+                    <td class="auto-style4"></td>
+                    <td class="auto-style4"></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
@@ -64,10 +73,21 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">&nbsp;</td>
+                    <td class="auto-style2">
+                        <asp:DataList ID="dl_ProvinciasSucursales" runat="server" DataSourceID="SqDS_Provincias">
+                            <ItemTemplate>
+                                <asp:Button ID="Provincia" runat="server" CommandArgument='<%# Eval("Id_Provincia") %>' CommandName="FiltroProvincias" OnCommand="Provincia_Command" Text='<%# Eval("DescripcionProvincia") %>' Height="35px" Width="202px" />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3">
+                        <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal">
                             <%--<AlternatingItemTemplate>
                                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
@@ -85,10 +105,17 @@
                                     <br />URL_Imagen_Sucursal:
                                     <asp:TextBox ID="URL_Imagen_SucursalTextBox" runat="server" Text='<%# Bind("URL_Imagen_Sucursal") %>' />
                                     <br />
+                                    Id_Sucursal:
+                                    <asp:Label ID="Id_SucursalLabel1" runat="server" Text='<%# Eval("Id_Sucursal") %>' />
+                                    <br />
+                                    Id_ProvinciaSucursal:
+                                    <asp:TextBox ID="Id_ProvinciaSucursalTextBox" runat="server" Text='<%# Bind("Id_ProvinciaSucursal") %>' />
+                                    <br />
                                     <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
                                     <br />
                                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
-                                    <br /></td>
+                                    <br />
+                                </td>
                             </EditItemTemplate>
                             <EmptyDataTemplate>
                                 <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
@@ -113,15 +140,23 @@
                                     <br />URL_Imagen_Sucursal:
                                     <asp:TextBox ID="URL_Imagen_SucursalTextBox" runat="server" Text='<%# Bind("URL_Imagen_Sucursal") %>' />
                                     <br />
+                                    Id_ProvinciaSucursal:
+                                    <asp:TextBox ID="Id_ProvinciaSucursalTextBox" runat="server" Text='<%# Bind("Id_ProvinciaSucursal") %>' />
+                                    <br />
                                     <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
                                     <br />
                                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                                    <br /></td>
+                                    <br />
+                                </td>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <td runat="server" style="background-color: #E0FFFF;color: #333333;">Nombre Sucursal:
+                                <td runat="server" style="background-color: #E0FFFF;color: #333333;">
+                                    <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal") %>' Visible="False" />
+                                    <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal") %>' Visible="False" />
+                                    <br />
+                                    NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
-                                    <br />Descripcion Sucursal:
+                                    <br />DescripcionSucursal:
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
                                     <br />Imagen:
                                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
@@ -157,11 +192,17 @@
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
                                     <br />URL_Imagen_Sucursal:
                                     <asp:Label ID="URL_Imagen_SucursalLabel" runat="server" Text='<%# Eval("URL_Imagen_Sucursal") %>' />
-                                    <br /></td>
+                                    <br />Id_Sucursal:
+                                    <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal") %>' />
+                                    <br />
+                                    Id_ProvinciaSucursal:
+                                    <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal") %>' />
+                                    <br />
+                                </td>
                             </SelectedItemTemplate>
                         </asp:ListView>
                         <br />
-                        <asp:SqlDataSource ID="SqlDataSourceSucursales" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>" ProviderName="<%$ ConnectionStrings:BDSucursalesConnectionString.ProviderName %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSourceSucursales" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal], [Id_Sucursal], [Id_ProvinciaSucursal] FROM [Sucursal]"></asp:SqlDataSource>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

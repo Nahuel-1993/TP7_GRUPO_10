@@ -33,6 +33,24 @@ namespace TP7_Grupo10
         protected global::System.Web.UI.WebControls.Label lblTitulo;
 
         /// <summary>
+        /// Control SqDS_Provincias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqDS_Provincias;
+
+        /// <summary>
+        /// Control dl_ProvinciasSucursales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dl_ProvinciasSucursales;
+
+        /// <summary>
         /// Control lvSucursales.
         /// </summary>
         /// <remarks>
