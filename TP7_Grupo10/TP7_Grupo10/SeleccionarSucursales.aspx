@@ -74,7 +74,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:DataList ID="dl_ProvinciasSucursales" runat="server" DataSourceID="SqDS_Provincias">
+                        <asp:DataList ID="dl_ProvinciasSucursales" runat="server" DataSourceID="SqDS_Provincias" ClientIDMode="Static">
                             <ItemTemplate>
                                 <asp:Button ID="Provincia" runat="server" CommandArgument='<%# Eval("Id_Provincia") %>' CommandName="FiltroProvincias" OnCommand="Provincia_Command" Text='<%# Eval("DescripcionProvincia") %>' Height="35px" Width="202px" />
                                 <br />
@@ -87,7 +87,7 @@
                     </td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal">
+                        <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal" OnItemCommand="lvSucursales_ItemCommand">
                             <%--<AlternatingItemTemplate>
                                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
@@ -160,6 +160,9 @@
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
                                     <br />Imagen:
                                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" />
                                     <br /></td>
                             </ItemTemplate>
                             <LayoutTemplate>

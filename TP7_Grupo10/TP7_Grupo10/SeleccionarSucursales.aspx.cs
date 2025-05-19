@@ -31,5 +31,10 @@ namespace TP7_Grupo10
                 SqlDataSourceSucursales.DataBind();
             }
         }
+
+        protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            ///agregar el código en respuesta a Seleccionar
+        }
     }
 }
