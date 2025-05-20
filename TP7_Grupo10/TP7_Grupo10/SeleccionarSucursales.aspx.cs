@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiPractica_TP_N_7;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace TP7_Grupo10
         {
             DataTable tabla = new DataTable();
 
-            DataColumn columna = new DataColumn("ID SUCURSAL", System.Type.GetType("System.String"));
+            DataColumn columna = new DataColumn("ID SUCURSAL", System.Type.GetType("System.Int32"));
             tabla.Columns.Add(columna);
 
             columna = new DataColumn("NOMBRE", System.Type.GetType("System.String"));
@@ -78,9 +79,25 @@ namespace TP7_Grupo10
             return tabla;
         }
 
-        private void AgregarFila(DataTable tabla, ListViewItem item)
+        private bool AgregarFila(DataTable tabla, Sucursal sucursal)
         {
+            foreach(DataRow fila in tabla.Rows)
+            {
+                if (Convert.ToInt32(fila["ID Sucursal"]) == sucursal.IdSucursal)
+                {
+                    return false;
+                }                
+            }
 
+            DataRow filaNueva = tabla.NewRow();
+            
+            filaNueva["ID SUCURSAL"] = sucursal.IdSucursal;
+            filaNueva["NOMBRE"] = sucursal.nombreSucursal;
+            filaNueva["DESCRIPCIÓN"] = sucursal.nombreSucursal;
+            
+            tabla.Rows.Add(filaNueva);
+
+            return true;
         }
     }
 }
