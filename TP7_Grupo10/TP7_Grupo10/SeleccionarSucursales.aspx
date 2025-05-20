@@ -98,10 +98,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style13">&nbsp;</td>
+                    <td class="auto-style13"></td>
                     <td class="auto-style14">
                         <asp:HyperLink ID="hpListadoDeSucursales" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
                     </td>
