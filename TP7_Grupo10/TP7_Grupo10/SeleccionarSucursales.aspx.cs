@@ -11,7 +11,8 @@ namespace TP7_Grupo10
     public partial class SeleccionarSucursales : System.Web.UI.Page
     {
         string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
-        string CondicionWhere = string.Empty;
+        string CondicionWhere = string.Empty;      
+
         protected void Page_Load(object sender, EventArgs e)
         {                       
                 if (Session["TablaSucursales"] == null)
@@ -39,6 +40,7 @@ namespace TP7_Grupo10
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             ///agregar el código en respuesta a Seleccionar
+            
         }
 
         private DataTable CrearTabla()
