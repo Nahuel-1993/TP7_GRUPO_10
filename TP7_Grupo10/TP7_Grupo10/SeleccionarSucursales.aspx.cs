@@ -10,7 +10,7 @@ namespace TP7_Grupo10
 {
     public partial class SeleccionarSucursales : System.Web.UI.Page
     {
-        string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
+        private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
 
         protected void Page_Load(object sender, EventArgs e)
         {                       
