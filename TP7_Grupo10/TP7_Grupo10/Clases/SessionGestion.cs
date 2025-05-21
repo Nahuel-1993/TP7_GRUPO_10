@@ -39,7 +39,7 @@ namespace TP7_Grupo10.Clases
             }
         }
 
-        private DataTable CrearTabla()
+        public DataTable CrearTabla()
         {
             DataTable tabla = new DataTable();
 
@@ -55,14 +55,10 @@ namespace TP7_Grupo10.Clases
             return tabla;
         }
 
-        private bool AgregarFila(DataTable tabla, Sucursal sucursal)
+       public bool AgregarFila(Sucursal sucursal)
         {
-           /* if (Sucursal_Ya_Seleccionada(sucursal))
-            {
-                return false;
-            }*/
 
-            foreach (DataRow fila in tabla.Rows)
+            foreach (DataRow fila in dataTable.Rows)
             {
                 if (Convert.ToInt32(fila["ID Sucursal"]) == sucursal.IdSucursal)
                 {
@@ -70,20 +66,18 @@ namespace TP7_Grupo10.Clases
                 }
             }
 
-            DataRow filaNueva = tabla.NewRow();
+            DataRow filaNueva = dataTable.NewRow();
 
             filaNueva["ID SUCURSAL"] = sucursal.IdSucursal;
             filaNueva["NOMBRE"] = sucursal.nombreSucursal;
             filaNueva["DESCRIPCIÓN"] = sucursal.nombreSucursal;
 
-            tabla.Rows.Add(filaNueva);
+            dataTable.Rows.Add(filaNueva);
+
+            session[nombreSession] = dataTable; // Actualiza la sesión con la nueva tabla
 
             return true;
         }
 
-      /*  public bool Sucursal_Ya_Seleccionada(Sucursal sucursal)
-        {
-            
-        }*/
     }
 }

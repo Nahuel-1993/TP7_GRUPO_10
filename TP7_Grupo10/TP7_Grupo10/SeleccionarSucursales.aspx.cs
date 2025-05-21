@@ -60,36 +60,28 @@ namespace TP7_Grupo10
 
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            sucursal = new Sucursal();
+
             if (e.CommandName == "Select")
             {
-                int idSucursal = Convert.ToInt32(e.CommandArgument);
+                string commandArgument = e.CommandArgument.ToString();
+                string[] datos = commandArgument.Split('|');
 
-                // Obtener valores del ListView
-                Label lblNombre = e.Item.FindControl("NombreSucursalLabel") as Label;
-                Label lblDescripcion = e.Item.FindControl("DescripcionSucursalLabel") as Label;
+                sucursal.IdSucursal = Convert.ToInt32(datos[0]);
+                sucursal.nombreSucursal = datos[1];
+                sucursal.descripcionSucursal = datos[2];
 
-                // Crear DataTable si la sesión no tiene datos
-                DataTable dtSucursalesSeleccionadas = Session["SucursalesSeleccionadas"] as DataTable;
-                if (dtSucursalesSeleccionadas == null)
+                if (sessionSelecciones.AgregarFila(sucursal))
                 {
-                    dtSucursalesSeleccionadas = new DataTable();
-                    dtSucursalesSeleccionadas.Columns.Add("Id_Sucursal", typeof(int));
-                    dtSucursalesSeleccionadas.Columns.Add("NombreSucursal", typeof(string));
-                    dtSucursalesSeleccionadas.Columns.Add("DescripcionSucursal", typeof(string));
+                    // Se agrega la fila a la tabla de la sesión
+                    lblSeleccionados.Text = "Sucursal " + datos[1] + "  seleccionada correctamente.";
+                }
+                else
+                {
+                    // La sucursal ya estaba seleccionada
+                    lblSeleccionados.Text = "La sucursal " + datos[1] + " ya fue seleccionada.";
                 }
 
-                // Agregar nueva fila con los datos seleccionados
-                DataRow nuevaFila = dtSucursalesSeleccionadas.NewRow();
-                nuevaFila["Id_Sucursal"] = idSucursal;
-                nuevaFila["NombreSucursal"] = lblNombre;
-                nuevaFila["DescripcionSucursal"] = lblDescripcion;
-                dtSucursalesSeleccionadas.Rows.Add(nuevaFila);
-
-                // Guardar en sesión
-                Session["SucursalesSeleccionadas"] = dtSucursalesSeleccionadas;
-
-                ///Mensaje de prueba
-                lblMensaje.Text = e.CommandArgument.ToString();
             }
         }
 

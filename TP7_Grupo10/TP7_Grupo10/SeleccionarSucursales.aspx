@@ -167,6 +167,7 @@
                     </td>
                     <td class="auto-style31"></td>
                     <td class="auto-style32">
+                        <asp:Label ID="lblSeleccionados" runat="server"></asp:Label>
                         <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal" OnItemCommand="lvSucursales_ItemCommand">
                             <%--<AlternatingItemTemplate>
                                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">NombreSucursal:
@@ -238,7 +239,7 @@
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
                                     <br />
                                     <br />
-                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "," + Eval("NombreSucursal").ToString() + "," + Eval("DescripcionSucursal").ToString() %>' />
+                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "|" + Eval("NombreSucursal").ToString() + "|" + Eval("DescripcionSucursal").ToString() %>' />
                                     <br /></td>
                             </ItemTemplate>
                             <LayoutTemplate>
@@ -280,6 +281,8 @@
                                 </td>
                             </SelectedItemTemplate>
                         </asp:ListView>
+                        <br />
+                        <br />
                         </td>
                     <td class="auto-style33"></td>
                     <td class="auto-style34"></td>
