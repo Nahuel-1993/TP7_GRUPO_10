@@ -23,6 +23,7 @@ namespace TP7_Grupo10
             if (!IsPostBack)
             {
                 SqlDataSourceSucursales.SelectCommand = ConsultaBase;
+                lblSeleccionados.Text = string.Empty;
             }
             else if (ViewState["FiltroProvincia"] != null)
             {
