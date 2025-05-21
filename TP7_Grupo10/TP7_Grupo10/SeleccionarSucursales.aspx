@@ -250,6 +250,7 @@
                                 </td>
                             </InsertItemTemplate>
                             <ItemTemplate>
+                               
                                 <td runat="server" style="background-color: #E0FFFF;color: #333333; " class="auto-style35">
                                     <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal", "{0:N}") %>' Visible="False" />
                                     <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal", "{0:N}") %>' Visible="False"></asp:Label>
@@ -269,12 +270,13 @@
                                     <asp:Button ID="bSeleccionar" runat="server" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "|" + Eval("NombreSucursal").ToString() + "|" + Eval("DescripcionSucursal").ToString() %>' CommandName="Seleccion" OnCommand="bSeleccionar_Command" Text="Seleccionar" />
                                     <br /> 
                                 </td>
+                                   
                             </ItemTemplate>
                             <LayoutTemplate>
-                                <table runat="server">
+                               <table runat="server">
                                     <tr runat="server">
                                         <td runat="server">
-                                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif; text-align: center;">
                                                 <tr id="groupPlaceholder" runat="server">
                                                 </tr>
                                             </table>
@@ -282,7 +284,7 @@
                                     </tr>
                                     <tr runat="server">
                                         <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF">
-                                            <asp:DataPager ID="DataPager1" runat="server" PageSize="6">
+                                            <asp:DataPager ID="DataPager" runat="server" PageSize="6">
                                                 <Fields>
                                                     <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                                     <asp:NumericPagerField />
@@ -294,7 +296,7 @@
                                 </table>
                             </LayoutTemplate>
                             <SelectedItemTemplate>
-                                <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">NombreSucursal:
+                                <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
                                     <br />
                                     DescripcionSucursal:
@@ -312,7 +314,6 @@
                                 </td>
                             </SelectedItemTemplate>
                         </asp:ListView>
-                        <br />
                         <br />
                         </td>
                     <td class="auto-style33"></td>
