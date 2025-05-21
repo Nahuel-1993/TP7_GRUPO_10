@@ -57,34 +57,6 @@ namespace TP7_Grupo10
                 }
             }
         }
-
-        protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            sucursal = new Sucursal();
-
-            if (e.CommandName == "Select")
-            {
-                string commandArgument = e.CommandArgument.ToString();
-                string[] datos = commandArgument.Split('|');
-
-                sucursal.IdSucursal = Convert.ToInt32(datos[0]);
-                sucursal.nombreSucursal = datos[1];
-                sucursal.descripcionSucursal = datos[2];
-
-                if (sessionSelecciones.AgregarFila(sucursal))
-                {
-                    // Se agrega la fila a la tabla de la sesión
-                    lblSeleccionados.Text = "Sucursal " + datos[1] + "  seleccionada correctamente.";
-                }
-                else
-                {
-                    // La sucursal ya estaba seleccionada
-                    lblSeleccionados.Text = "La sucursal " + datos[1] + " ya fue seleccionada.";
-                }
-
-            }
-        }
-
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string nombreSucursal = txtNombreSucursal.Text.Trim();
@@ -109,6 +81,33 @@ namespace TP7_Grupo10
             }
 
             txtNombreSucursal.Text = string.Empty;
+        }
+
+        protected void bSeleccionar_Command(object sender, CommandEventArgs e)
+        {
+            sucursal = new Sucursal();
+
+            if (e.CommandName == "Seleccion")
+            {
+                string commandArgument = e.CommandArgument.ToString();
+                string[] datos = commandArgument.Split('|');
+
+                sucursal.IdSucursal = Convert.ToInt32(datos[0]);
+                sucursal.nombreSucursal = datos[1];
+                sucursal.descripcionSucursal = datos[2];
+
+                if (sessionSelecciones.AgregarFila(sucursal))
+                {
+                    // Se agrega la fila a la tabla de la sesión
+                    lblSeleccionados.Text = "Sucursal " + datos[1] + "  seleccionada correctamente.";
+                }
+                else
+                {
+                    // La sucursal ya estaba seleccionada
+                    lblSeleccionados.Text = "La sucursal " + datos[1] + " ya fue seleccionada.";
+                }
+
+            }
         }
     }
 }
