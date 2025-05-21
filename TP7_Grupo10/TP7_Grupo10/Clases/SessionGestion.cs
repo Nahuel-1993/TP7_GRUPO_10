@@ -104,8 +104,7 @@ namespace TP7_Grupo10.Clases
                 //Devuelvo false
                 return false; //Si devuelve false deberia de mandar un mensaje que diga que no hay nada seleccionado
             }
-
-            
+   
         }
     }
 }
