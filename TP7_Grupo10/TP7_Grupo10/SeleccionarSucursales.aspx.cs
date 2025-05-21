@@ -60,7 +60,37 @@ namespace TP7_Grupo10
 
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            ///agregar el código en respuesta a Seleccionar (cargar objeto sucursal y enviarlo a metodo essionSelecciones.AgregarFila(sucursal))
+            if (e.CommandName == "Select")
+            {
+                int idSucursal = Convert.ToInt32(e.CommandArgument);
+
+                // Obtener valores del ListView
+                Label lblNombre = e.Item.FindControl("NombreSucursalLabel") as Label;
+                Label lblDescripcion = e.Item.FindControl("DescripcionSucursalLabel") as Label;
+
+                // Crear DataTable si la sesión no tiene datos
+                DataTable dtSucursalesSeleccionadas = Session["SucursalesSeleccionadas"] as DataTable;
+                if (dtSucursalesSeleccionadas == null)
+                {
+                    dtSucursalesSeleccionadas = new DataTable();
+                    dtSucursalesSeleccionadas.Columns.Add("Id_Sucursal", typeof(int));
+                    dtSucursalesSeleccionadas.Columns.Add("NombreSucursal", typeof(string));
+                    dtSucursalesSeleccionadas.Columns.Add("DescripcionSucursal", typeof(string));
+                }
+
+                // Agregar nueva fila con los datos seleccionados
+                DataRow nuevaFila = dtSucursalesSeleccionadas.NewRow();
+                nuevaFila["Id_Sucursal"] = idSucursal;
+                nuevaFila["NombreSucursal"] = lblNombre;
+                nuevaFila["DescripcionSucursal"] = lblDescripcion;
+                dtSucursalesSeleccionadas.Rows.Add(nuevaFila);
+
+                // Guardar en sesión
+                Session["SucursalesSeleccionadas"] = dtSucursalesSeleccionadas;
+
+                ///Mensaje de prueba
+                lblMensaje.Text = e.CommandArgument.ToString();
+            }
         }
 
     }
