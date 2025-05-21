@@ -87,5 +87,25 @@ namespace TP7_Grupo10.Clases
             return true;
         }
 
+        public bool EliminarSession()
+        {
+            //Si sesion no esta en null
+            if (session != null && dataTable != null) { 
+
+                //Los igualo a null
+                session = null;
+                dataTable = null;
+
+                //Devulevo true
+                return true;
+            }
+            else
+            {
+                //Devuelvo false
+                return false; //Si devuelve false deberia de mandar un mensaje que diga que no hay nada seleccionado
+            }
+
+            
+        }
     }
 }
