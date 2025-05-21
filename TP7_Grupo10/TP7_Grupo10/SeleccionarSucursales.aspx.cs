@@ -24,9 +24,9 @@ namespace TP7_Grupo10
             {
                 SqlDataSourceSucursales.SelectCommand = ConsultaBase;
             }
-            else if (Session["FiltroProvincia"] != null)
+            else if (ViewState["FiltroProvincia"] != null)
             {
-                SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + Session["FiltroProvincia"].ToString();
+                SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + ViewState["FiltroProvincia"].ToString();
                 SqlDataSourceSucursales.DataBind();
             }
         }
@@ -36,7 +36,7 @@ namespace TP7_Grupo10
             if (e.CommandName == "FiltroProvincias")
             {
                 // Se guarda la consulta WHERE en Session
-                Session["FiltroProvincia"] = "WHERE [Id_ProvinciaSucursal] = @Id_Provincia";
+                ViewState["FiltroProvincia"] = "WHERE [Id_ProvinciaSucursal] = @Id_Provincia";
 
                 // Antes de agregar el nuevo parámetro, elimina el anterior si existe
                 if ( SqlDataSourceSucursales.SelectParameters["Id_Provincia"] != null)
@@ -45,7 +45,7 @@ namespace TP7_Grupo10
                 }
                 
                 SqlDataSourceSucursales.SelectParameters.Add("Id_Provincia", e.CommandArgument.ToString());
-                SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + Session["FiltroProvincia"].ToString();
+                SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + ViewState["FiltroProvincia"].ToString();
                 SqlDataSourceSucursales.DataBind();
 
                 // Reinicia la paginación del ListView
@@ -74,7 +74,7 @@ namespace TP7_Grupo10
                 SqlDataSourceSucursales.SelectParameters.Remove(SqlDataSourceSucursales.SelectParameters["NombreSucursal"]);
             }
 
-            SqlDataSourceSucursales.SelectParameters.Add("NombreSucursal", "%" + nombreSucursal + "%"); // Búsqueda con LIKE
+            SqlDataSourceSucursales.SelectParameters.Add("NombreSucursal", "%" + nombreSucursal + "%");
             SqlDataSourceSucursales.SelectCommand = ConsultaBase + consultaWhere;
             SqlDataSourceSucursales.DataBind();
 
