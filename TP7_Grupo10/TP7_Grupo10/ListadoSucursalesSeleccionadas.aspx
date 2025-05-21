@@ -73,7 +73,14 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:GridView ID="gvSucursalesSeleccionadas" runat="server">
+                    <asp:GridView ID="gvSucursalesSeleccionadas" runat="server" OnRowCommand="gvSucursalesSeleccionadas_RowCommand">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEliminar" runat="server" CommandArgument="<%# Container.DataItemIndex %>" CommandName="Eliminar" Text="Eliminar" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
                     </asp:GridView>
                 </td>
                 <td>&nbsp;</td>

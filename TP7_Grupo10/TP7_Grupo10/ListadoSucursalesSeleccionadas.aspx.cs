@@ -15,18 +15,36 @@ namespace TP7_Grupo10
         SessionGestion sessionSelecciones;
         protected void Page_Load(object sender, EventArgs e)
         {
-                sessionSelecciones = new SessionGestion(Session);
+            sessionSelecciones = new SessionGestion(Session);
 
-                if(sessionSelecciones._dataTable.Rows.Count > 0)
+            if (!IsPostBack)
+            {
+                if (sessionSelecciones._dataTable.Rows.Count > 0)
                 {
                     gvSucursalesSeleccionadas.DataSource = sessionSelecciones._dataTable;
                     gvSucursalesSeleccionadas.DataBind();
                 }
-                else
-                {
+            }
+
+            else
+            {
                     //Mensaje si no hay sucursales seleccionadas
                 } 
 
+        }
+
+        protected void gvSucursalesSeleccionadas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Eliminar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                DataTable dt = sessionSelecciones._dataTable;
+                dt.Rows[index].Delete();
+                dt.AcceptChanges();
+                sessionSelecciones._dataTable = dt;
+                gvSucursalesSeleccionadas.DataSource = dt;
+                gvSucursalesSeleccionadas.DataBind();
+            }
         }
     }
 }
