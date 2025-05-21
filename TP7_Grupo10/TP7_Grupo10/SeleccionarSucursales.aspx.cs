@@ -11,14 +11,14 @@ namespace TP7_Grupo10
 {
     public partial class SeleccionarSucursales : System.Web.UI.Page
     {
-        private SessionSelecciones sessionSelecciones;
+        private SessionGestion sessionSelecciones;
         private Sucursal sucursal;
 
         private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            sessionSelecciones = new SessionSelecciones(Session);
+            sessionSelecciones = new SessionGestion(Session);
 
             if (!IsPostBack)
             {

@@ -8,12 +8,12 @@ using System.Web.SessionState;
 
 namespace TP7_Grupo10.Clases
 {
-	public class SessionSelecciones
+	public class SessionGestion
 	{
         HttpSessionState session;
         DataTable dataTable;
         const string nombreSession = "TablaSucursales";
-        public SessionSelecciones(HttpSessionState sesion)
+        public SessionGestion(HttpSessionState sesion)
         {
             session = sesion;
 

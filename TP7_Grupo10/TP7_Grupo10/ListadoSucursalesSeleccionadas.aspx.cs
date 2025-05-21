@@ -12,12 +12,12 @@ namespace TP7_Grupo10
 {
     public partial class ListadoSucursalesSeleccionadas : System.Web.UI.Page
     {
-        SessionSelecciones sessionSelecciones;
+        SessionGestion sessionSelecciones;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                sessionSelecciones = new SessionSelecciones(Session);
+                sessionSelecciones = new SessionGestion(Session);
 
                 if(sessionSelecciones._dataTable.Rows.Count <= 0)
                 {
