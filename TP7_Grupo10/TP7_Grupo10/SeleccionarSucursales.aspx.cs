@@ -63,5 +63,30 @@ namespace TP7_Grupo10
             ///agregar el código en respuesta a Seleccionar (cargar objeto sucursal y enviarlo a metodo essionSelecciones.AgregarFila(sucursal))
         }
 
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string nombreSucursal = txtNombreSucursal.Text.Trim();
+            string consultaWhere = " WHERE NombreSucursal LIKE @NombreSucursal";
+
+            // Limpiar parámetros anteriores
+            if (SqlDataSourceSucursales.SelectParameters["NombreSucursal"] != null)
+            {
+                SqlDataSourceSucursales.SelectParameters.Remove(SqlDataSourceSucursales.SelectParameters["NombreSucursal"]);
+            }
+
+            SqlDataSourceSucursales.SelectParameters.Add("NombreSucursal", "%" + nombreSucursal + "%"); // Búsqueda con LIKE
+            SqlDataSourceSucursales.SelectCommand = ConsultaBase + consultaWhere;
+            SqlDataSourceSucursales.DataBind();
+
+            // Reinicia la paginación del ListView
+            DataPager dataPager = lvSucursales.FindControl("DataPager1") as DataPager;
+
+            if (dataPager != null)
+            {
+                dataPager.SetPageProperties(0, dataPager.PageSize, true);
+            }
+
+            txtNombreSucursal.Text = string.Empty;
+        }
     }
 }

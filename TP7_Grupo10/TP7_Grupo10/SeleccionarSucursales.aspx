@@ -138,7 +138,7 @@
                         <asp:TextBox ID="txtNombreSucursal" runat="server" Width="293px"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
                     </td>
                 </tr>
             </table>
