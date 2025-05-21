@@ -40,7 +40,7 @@ namespace TP7_Grupo10
                 ViewState["FiltroProvincia"] = "WHERE [Id_ProvinciaSucursal] = @Id_Provincia";
 
                 // Antes de agregar el nuevo parámetro, elimina el anterior si existe
-                if ( SqlDataSourceSucursales.SelectParameters["Id_Provincia"] != null)
+                if (SqlDataSourceSucursales.SelectParameters["Id_Provincia"] != null)
                 {
                     SqlDataSourceSucursales.SelectParameters.Remove(SqlDataSourceSucursales.SelectParameters["Id_Provincia"]);
                 }
@@ -58,10 +58,12 @@ namespace TP7_Grupo10
                 }
             }
         }
+
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string nombreSucursal = txtNombreSucursal.Text.Trim();
             string consultaWhere = " WHERE NombreSucursal LIKE @NombreSucursal";
+            ViewState["FiltroProvincia"] = null;
 
             // Limpiar parámetros anteriores
             if (SqlDataSourceSucursales.SelectParameters["NombreSucursal"] != null)
@@ -82,6 +84,7 @@ namespace TP7_Grupo10
             }
 
             txtNombreSucursal.Text = string.Empty;
+            lblSeleccionados.Text = string.Empty;
         }
 
         protected void bSeleccionar_Command(object sender, CommandEventArgs e)
