@@ -60,7 +60,29 @@ namespace TP7_Grupo10
 
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            ///agregar el código en respuesta a Seleccionar (cargar objeto sucursal y enviarlo a metodo essionSelecciones.AgregarFila(sucursal))
+            sucursal = new Sucursal();
+
+            if (e.CommandName == "Select")
+            {
+                string commandArgument = e.CommandArgument.ToString();
+                string[] datos = commandArgument.Split('|');
+
+                sucursal.IdSucursal = Convert.ToInt32(datos[0]);
+                sucursal.nombreSucursal = datos[1];
+                sucursal.descripcionSucursal = datos[2];
+
+                if (sessionSelecciones.AgregarFila(sucursal))
+                {
+                    // Se agrega la fila a la tabla de la sesión
+                    lblSeleccionados.Text = "Sucursal " + datos[1] + "  seleccionada correctamente.";
+                }
+                else
+                {
+                    // La sucursal ya estaba seleccionada
+                    lblSeleccionados.Text = "La sucursal " + datos[1] + " ya fue seleccionada.";
+                }
+
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

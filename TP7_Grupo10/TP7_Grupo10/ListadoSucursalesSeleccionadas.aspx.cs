@@ -15,11 +15,9 @@ namespace TP7_Grupo10
         SessionGestion sessionSelecciones;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
                 sessionSelecciones = new SessionGestion(Session);
 
-                if(sessionSelecciones._dataTable.Rows.Count <= 0)
+                if(sessionSelecciones._dataTable.Rows.Count > 0)
                 {
                     gvSucursalesSeleccionadas.DataSource = sessionSelecciones._dataTable;
                     gvSucursalesSeleccionadas.DataBind();
@@ -27,8 +25,7 @@ namespace TP7_Grupo10
                 else
                 {
                     //Mensaje si no hay sucursales seleccionadas
-                }
-            }
+                } 
 
         }
     }

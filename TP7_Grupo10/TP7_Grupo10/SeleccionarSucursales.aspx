@@ -167,6 +167,7 @@
                     </td>
                     <td class="auto-style31"></td>
                     <td class="auto-style32">
+                        <asp:Label ID="lblSeleccionados" runat="server"></asp:Label>
                         <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal" OnItemCommand="lvSucursales_ItemCommand">
                             <%--<AlternatingItemTemplate>
                                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">NombreSucursal:
@@ -238,8 +239,9 @@
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
                                     <br />
                                     <br />
-                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" />
-                                    <br /></td>
+                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "|" + Eval("NombreSucursal").ToString() + "|" + Eval("DescripcionSucursal").ToString() %>' />
+                                    <br />
+                                </td>
                             </ItemTemplate>
                             <LayoutTemplate>
                                 <table runat="server">
@@ -265,28 +267,29 @@
                                 </table>
                             </LayoutTemplate>
                             <SelectedItemTemplate>
-                                <td runat="server" style="background-color: #E2DED6;font-weight: bold;color: #333333;">NombreSucursal:
-                                    <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
-                                    <br />DescripcionSucursal:
-                                    <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
-                                    <br />URL_Imagen_Sucursal:
-                                    <asp:Label ID="URL_Imagen_SucursalLabel" runat="server" Text='<%# Eval("URL_Imagen_Sucursal") %>' />
-                                    <br />Id_Sucursal:
-                                    <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal") %>' />
+                                <td runat="server" style="background-color: #E0FFFF;color: #333333;">
+                                    <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' Font-Bold="True" />
                                     <br />
-                                    Id_ProvinciaSucursal:
-                                    <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal") %>' />
+                                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
+                                    <br />
+                                    <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>' />
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="btnSeleccionar" runat="server" CommandName="Select" Text="Seleccionar" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "|" + Eval("NombreSucursal").ToString() + "|" + Eval("DescripcionSucursal").ToString() %>' />
                                     <br />
                                 </td>
                             </SelectedItemTemplate>
                         </asp:ListView>
+                        <br />
+                        <br />
                         </td>
                     <td class="auto-style33"></td>
                     <td class="auto-style34"></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        &nbsp;</td>
+                        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+                    </td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style5">
                         <asp:SqlDataSource ID="SqlDataSourceSucursales" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal], [Id_Sucursal], [Id_ProvinciaSucursal] FROM [Sucursal]"></asp:SqlDataSource>
