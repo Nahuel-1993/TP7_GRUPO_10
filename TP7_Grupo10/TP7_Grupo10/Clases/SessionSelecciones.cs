@@ -5,13 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace MiPractica_TP_N_7.Clases_Flor
+
+namespace TP7_Grupo10.Clases
 {
 	public class SessionSelecciones
 	{
         HttpSessionState session;
         DataTable dataTable;
-        const string nombreSession = "SeleccionSucursal";
+        const string nombreSession = "TablaSucursales";
         public SessionSelecciones(HttpSessionState sesion)
         {
             session = sesion;
@@ -26,19 +27,6 @@ namespace MiPractica_TP_N_7.Clases_Flor
             }
 
         }
-        public HttpSessionState _session
-        { 
-            get 
-            { 
-                return session; 
-            }
-
-            set 
-            { 
-                session = value; 
-            } 
-        }
-
         public DataTable _dataTable
         {
             get
@@ -53,46 +41,49 @@ namespace MiPractica_TP_N_7.Clases_Flor
 
         private DataTable CrearTabla()
         {
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Id Sucursal", typeof(int));
-            dataTable.Columns.Add("Nombre", typeof(string));
-            dataTable.Columns.Add("Descripcion", typeof(string));
-            return dataTable;
+            DataTable tabla = new DataTable();
+
+            DataColumn columna = new DataColumn("ID SUCURSAL", System.Type.GetType("System.Int32"));
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn("NOMBRE", System.Type.GetType("System.String"));
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn("DESCRIPCIÓN", System.Type.GetType("System.String"));
+            tabla.Columns.Add(columna);
+
+            return tabla;
         }
 
-        public bool AgregarFilaTabla(Sucursales_Flor sucursal)
+        private bool AgregarFila(DataTable tabla, Sucursal sucursal)
         {
-            if (Sucursal_Ya_Seleccionada(sucursal))
+           /* if (Sucursal_Ya_Seleccionada(sucursal))
             {
                 return false;
-            }
-            else
-            {
-                DataRow dataRow = dataTable.NewRow();
-                dataRow["Id Sucursal"] = sucursal.IdSucursal;
-                dataRow["Nombre"] = sucursal.nombreSucursal;
-                dataRow["Descripcion"] = sucursal.descripcionSucursal;
-                dataTable.Rows.Add(dataRow);
-                return true;
-            }
-        }
+            }*/
 
-        public bool Sucursal_Ya_Seleccionada(Sucursales_Flor sucursal)
-        {
-            // Verifica si la sesión de usuario es nula
-            if (session[nombreSession] != null)
+            foreach (DataRow fila in tabla.Rows)
             {
-                DataTable tablaSession = session[nombreSession] as DataTable;
-                foreach (DataRow row in tablaSession.Rows) // Cambiado de DataTable a DataRow
+                if (Convert.ToInt32(fila["ID Sucursal"]) == sucursal.IdSucursal)
                 {
-                    // Verifica si el ID de la Sucursal seleccionada es igual al ID de la sucursal en la fila seleccionada
-                    if (Convert.ToInt32(row["Id Sucursal"]) == sucursal.IdSucursal)
-                    {
-                        return true;
-                    }
+                    return false;
                 }
             }
-            return false;
+
+            DataRow filaNueva = tabla.NewRow();
+
+            filaNueva["ID SUCURSAL"] = sucursal.IdSucursal;
+            filaNueva["NOMBRE"] = sucursal.nombreSucursal;
+            filaNueva["DESCRIPCIÓN"] = sucursal.nombreSucursal;
+
+            tabla.Rows.Add(filaNueva);
+
+            return true;
         }
+
+      /*  public bool Sucursal_Ya_Seleccionada(Sucursal sucursal)
+        {
+            
+        }*/
     }
 }

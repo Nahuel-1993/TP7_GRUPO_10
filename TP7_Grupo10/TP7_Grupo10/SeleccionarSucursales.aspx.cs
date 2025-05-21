@@ -1,24 +1,24 @@
-﻿using MiPractica_TP_N_7;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TP7_Grupo10.Clases;
 
 namespace TP7_Grupo10
 {
     public partial class SeleccionarSucursales : System.Web.UI.Page
     {
+        private SessionSelecciones sessionSelecciones;
+        private Sucursal sucursal;
+
         private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
 
         protected void Page_Load(object sender, EventArgs e)
-        {                       
-            if (Session["TablaSucursales"] == null)
-            {
-                Session["TablaSucursales"] = CrearTabla();
-            }
+        {
+            sessionSelecciones = new SessionSelecciones(Session);
 
             if (!IsPostBack)
             {
@@ -60,44 +60,8 @@ namespace TP7_Grupo10
 
         protected void lvSucursales_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            ///agregar el código en respuesta a Seleccionar
+            ///agregar el código en respuesta a Seleccionar (cargar objeto sucursal y enviarlo a metodo essionSelecciones.AgregarFila(sucursal))
         }
 
-        private DataTable CrearTabla()
-        {
-            DataTable tabla = new DataTable();
-
-            DataColumn columna = new DataColumn("ID SUCURSAL", System.Type.GetType("System.Int32"));
-            tabla.Columns.Add(columna);
-
-            columna = new DataColumn("NOMBRE", System.Type.GetType("System.String"));
-            tabla.Columns.Add(columna);
-
-            columna = new DataColumn("DESCRIPCIÓN", System.Type.GetType("System.String"));
-            tabla.Columns.Add(columna);
-
-            return tabla;
-        }
-
-        private bool AgregarFila(DataTable tabla, Sucursal sucursal)
-        {
-            foreach(DataRow fila in tabla.Rows)
-            {
-                if (Convert.ToInt32(fila["ID Sucursal"]) == sucursal.IdSucursal)
-                {
-                    return false;
-                }                
-            }
-
-            DataRow filaNueva = tabla.NewRow();
-            
-            filaNueva["ID SUCURSAL"] = sucursal.IdSucursal;
-            filaNueva["NOMBRE"] = sucursal.nombreSucursal;
-            filaNueva["DESCRIPCIÓN"] = sucursal.nombreSucursal;
-            
-            tabla.Rows.Add(filaNueva);
-
-            return true;
-        }
     }
 }

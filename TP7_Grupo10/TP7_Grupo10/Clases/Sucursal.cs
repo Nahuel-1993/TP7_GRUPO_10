@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MiPractica_TP_N_7
+namespace TP7_Grupo10.Clases
 {
 	public class Sucursal
 	{
