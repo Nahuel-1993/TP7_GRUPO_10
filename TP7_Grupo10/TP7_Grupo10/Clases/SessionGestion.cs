@@ -13,6 +13,13 @@ namespace TP7_Grupo10.Clases
         HttpSessionState session;
         DataTable dataTable;
         const string nombreSession = "TablaSucursales";
+
+        //Constructor vacio
+        public SessionGestion()
+        {
+
+        }
+
         public SessionGestion(HttpSessionState sesion)
         {
             session = sesion;
@@ -27,6 +34,7 @@ namespace TP7_Grupo10.Clases
             }
 
         }
+
         public DataTable _dataTable
         {
             get
@@ -54,8 +62,8 @@ namespace TP7_Grupo10.Clases
 
             return tabla;
         }
-
-       public bool AgregarFila(Sucursal sucursal)
+        
+        public bool AgregarFila(Sucursal sucursal)
         {
 
             foreach (DataRow fila in dataTable.Rows)
