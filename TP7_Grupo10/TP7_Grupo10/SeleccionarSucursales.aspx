@@ -249,13 +249,13 @@
                                     <br />
                                 </td>
                             </InsertItemTemplate>
-                            <ItemTemplate>
+                            <ItemTemplate >
                                
-                                <td runat="server" style="background-color: #E0FFFF;color: #333333; " class="auto-style35">
+                                <td runat="server" style="background-color: #E0FFFF;color: #333333; padding:20px;" class="auto-style35">
                                     <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal", "{0:N}") %>' Visible="False" />
                                     <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal", "{0:N}") %>' Visible="False"></asp:Label>
                                     <br />
-                                    NombreSucursal:
+                                    Nombre Sucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal", "{0}") %>' />
                                     <br />
                                     <br />
@@ -263,7 +263,7 @@
                                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
                                     <br />
                                     <br />
-                                    DescripcionSucursal:
+                                    Descripcion Sucursal:
                                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal", "{0}") %>' />
                                     <br />
                                     <br />
@@ -283,7 +283,7 @@
                                         </td>
                                     </tr>
                                     <tr runat="server">
-                                        <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF">
+                                        <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF; padding:10px;" >
                                             <asp:DataPager ID="DataPager1" runat="server" PageSize="6">
                                                 <Fields>
                                                     <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
