@@ -7,96 +7,132 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style2 {
-            width: 187px;
-        }
-        .auto-style3 {
-            width: 187px;
-            height: 29px;
-        }
-        .auto-style4 {
-            height: 29px;
-        }
-        .auto-style5 {
-            width: 1147px;
-        }
-        .auto-style6 {
-            height: 29px;
-            width: 1147px;
-        }
-        .auto-style7 {
-            width: 18px;
-        }
-        .auto-style8 {
-            width: 18px;
-            height: 29px;
-        }
-        .auto-style13 {
-            width: 226px;
-        }
-        .auto-style14 {
-            width: 176px;
-        }
-        .auto-style15 {
-            width: 295px;
-        }
-        .auto-style17 {
-            width: 338px;
-        }
-        .auto-style18 {
-            height: 29px;
-            width: 338px;
-        }
-        .auto-style20 {
-            margin-left: 200px;
-        }
-        .auto-style21 {
-            width: 226px;
-            height: 41px;
-        }
-        .auto-style22 {
-            height: 41px;
-        }
-        .auto-style26 {
-            height: 41px;
-            width: 317px;
-        }
-        .auto-style27 {
-            width: 317px;
-        }
-        .auto-style28 {
-            width: 312px;
-        }
-        .auto-style29 {
-            height: 41px;
-            width: 312px;
-        }
-        .auto-style30 {
-            width: 187px;
-            height: 535px;
-        }
-        .auto-style31 {
-            width: 18px;
-            height: 535px;
-        }
-        .auto-style32 {
-            width: 1147px;
-            height: 535px;
-        }
-        .auto-style33 {
-            width: 338px;
-            height: 535px;
-        }
-        .auto-style34 {
-            height: 535px;
-        }
-        .auto-style35 {
-            width: 436px;
-        }
-    </style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .auto-style1 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    asp\:HyperLink {
+        text-decoration: none;
+    }
+
+    a, .auto-style14 a, .auto-style15 a {
+        color: #0077cc;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #005fa3;
+    }
+
+    .auto-style28 {
+        font-weight: bold;
+    }
+
+    .auto-style27 input[type="text"] {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"], .btn, asp\:Button {
+        background-color: #0077cc;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover, .btn:hover {
+        background-color: #005fa3;
+    }
+
+    .auto-style30 {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .auto-style35 {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #e9f5ff;
+        padding: 15px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .auto-style35 img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .auto-style35 button {
+        margin-top: 10px;
+    }
+
+    .auto-style35:hover {
+        background-color: #d6ecfb;
+        transition: background-color 0.3s ease;
+    }
+
+    .auto-style29 label {
+        font-size: 28px;
+        color: #333;
+    }
+
+    .auto-style26, .auto-style22 {
+        height: 20px;
+    }
+
+    .auto-style5 {
+        text-align: center;
+    }
+
+    .auto-style2, .auto-style7 {
+        width: 18px;
+    }
+
+    .auto-style20 {
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: center;
+    }
+
+    .auto-style32 {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .auto-style35 .aspNet-Label {
+        display: block;
+        margin-top: 5px;
+    }
+</style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -376,3 +412,5 @@
         &nbsp;</p>
 </body>
 </html>
+   width: 187px;
+         
