@@ -45,6 +45,12 @@ namespace TP7_Grupo10
                 sessionSelecciones._dataTable = dt;
                 gvSucursalesSeleccionadas.DataSource = dt;
                 gvSucursalesSeleccionadas.DataBind();
+
+                if (sessionSelecciones._dataTable == null || sessionSelecciones._dataTable.Rows.Count <= 0)
+                {
+                    lblMensaje.Text = "No hay sucursales seleccionadas";
+                    lblMensaje.Visible = true;
+                }
             }
         }
     }
