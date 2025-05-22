@@ -19,19 +19,20 @@ namespace TP7_Grupo10
 
             if (!IsPostBack)
             {
-                if (sessionSelecciones._dataTable.Rows.Count > 0)
+                if (sessionSelecciones._dataTable != null && sessionSelecciones._dataTable.Rows.Count > 0)
                 {
                     gvSucursalesSeleccionadas.DataSource = sessionSelecciones._dataTable;
                     gvSucursalesSeleccionadas.DataBind();
+                    lblMensaje.Visible = false; // Ocultamos el mensaje si hay datos
+                }
+                else
+                {
+                    lblMensaje.Text = "No hay sucursales seleccionadas";
+                    lblMensaje.Visible = true;
                 }
             }
-
-            else
-            {
-                    //Mensaje si no hay sucursales seleccionadas
-                } 
-
         }
+
 
         protected void gvSucursalesSeleccionadas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
