@@ -102,7 +102,7 @@
         margin-left: 71px;
     }
     .auto-style11 {
-        width: 377px;
+        width: 287px;
     }
 </style>
 </head>
@@ -152,13 +152,14 @@
                     <table class="auto-style6">
                         <tr>
                             <td class="auto-style7">
-                    <asp:Label ID="lblMensaje" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                    <asp:Label ID="lblMensaje" runat="server" Font-Bold="True" Font-Size="X-Large">No hay sucursales seleccionadas</asp:Label>
                             </td>
                             <td class="auto-style8">
-                                <asp:Button ID="btnMostrarDireccion" runat="server" OnClick="btnMostrarDireccion_Click" Text="Mostrar Dirección" CssClass="auto-style10" />
+                                <asp:Button ID="btnMostrarDireccion" runat="server" OnClick="btnMostrarDireccion_Click" Text="Mostrar Dirección" CssClass="auto-style10" Visible="False" />
                             </td>
                             <td class="auto-style11">
-                                &nbsp;</td>
+                                <asp:Button ID="btnEliminarTodo" runat="server" OnClick="btnEliminarTodo_Click" Text="Eliminar todo" CssClass="auto-style10" Visible="False" />
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>

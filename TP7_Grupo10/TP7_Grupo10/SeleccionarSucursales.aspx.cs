@@ -124,9 +124,7 @@ namespace TP7_Grupo10
                     // La sucursal ya estaba seleccionada
                     lblSeleccionados.Text = "La sucursal " + datos[1] + " ya fue seleccionada.";
                 }
-
             }
         }
-       
     }
 }
