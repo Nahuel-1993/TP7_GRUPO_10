@@ -291,16 +291,13 @@
                                     <asp:Label ID="Id_SucursalLabel" runat="server" Text='<%# Eval("Id_Sucursal", "{0:N}") %>' Visible="False" />
                                     <asp:Label ID="Id_ProvinciaSucursalLabel" runat="server" Text='<%# Eval("Id_ProvinciaSucursal", "{0:N}") %>' Visible="False"></asp:Label>
                                     <br />
-                                    Nombre Sucursal:
-                                    <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal", "{0}") %>' />
+                                    &nbsp;<asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal", "{0}") %>' Font-Bold="True" />
                                     <br />
                                     <br />
-                                    Imagen Sucursal:<br />
                                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' />
                                     <br />
                                     <br />
-                                    Descripcion Sucursal:
-                                    <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal", "{0}") %>' />
+                                    &nbsp;<asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal", "{0}") %>' />
                                     <br />
                                     <br />
                                     <asp:Button ID="bSeleccionar" runat="server" CommandArgument='<%# Eval("Id_Sucursal").ToString() + "|" + Eval("NombreSucursal").ToString() + "|" + Eval("DescripcionSucursal").ToString() %>' CommandName="Seleccion" OnCommand="bSeleccionar_Command" Text="Seleccionar" />

@@ -66,13 +66,10 @@ namespace TP7_Grupo10.Clases
         public bool AgregarFila(Sucursal sucursal)
         {
 
-            foreach (DataRow fila in dataTable.Rows)
-            {
-                if (Convert.ToInt32(fila["ID Sucursal"]) == sucursal.IdSucursal)
-                {
-                    return false;
-                }
-            }
+             if (Sucursal_Ya_Seleccionada(sucursal))
+             {
+                 return false;
+             }
 
             DataRow filaNueva = dataTable.NewRow();
 
@@ -105,6 +102,22 @@ namespace TP7_Grupo10.Clases
                 return false; //Si devuelve false deberia de mandar un mensaje que diga que no hay nada seleccionado
             }
    
+        }
+        public bool Sucursal_Ya_Seleccionada(Sucursal sucursal)
+        {
+            if (session[nombreSession] != null)
+            {
+                DataTable tablaSession = session[nombreSession] as DataTable;
+
+                foreach (DataRow row in tablaSession.Rows) 
+                {
+                    if (Convert.ToInt32(row["Id Sucursal"]) == sucursal.IdSucursal)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
