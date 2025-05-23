@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using TP7_Grupo10.Clases;
+using System.Reflection;
 
 
 namespace TP7_Grupo10
@@ -31,20 +32,17 @@ namespace TP7_Grupo10
                     gvSucursalesSeleccionadas.DataBind();
                     lblMensaje.Visible = false; // Ocultamos el mensaje si hay datos
                     btnMostrarDireccion.Visible = true;
+                    btnEliminarTodo.Visible = true;
                 }
                 else
                 {
-                    lblMensaje.Text = "No hay sucursales seleccionadas";
                     lblMensaje.Visible = true;
-                    btnMostrarDireccion.Visible = false;
                 }
-
             }
 
             gvSucursalesSeleccionadas.Columns[4].Visible = estadoDireccion;
 
         }
-
 
         protected void gvSucursalesSeleccionadas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -60,13 +58,13 @@ namespace TP7_Grupo10
 
                 if (sessionSelecciones._dataTable == null || sessionSelecciones._dataTable.Rows.Count <= 0)
                 {
-                    lblMensaje.Text = "No hay sucursales seleccionadas";
                     lblMensaje.Visible = true;
                 }
 
                 if(gvSucursalesSeleccionadas.Rows.Count == 0)
                 {
                     btnMostrarDireccion.Visible = false;
+                    btnEliminarTodo.Visible = false;
                 }
             }
         }
@@ -91,6 +89,21 @@ namespace TP7_Grupo10
                 gvSucursalesSeleccionadas.Columns[4].Visible = false;
                 btnMostrarDireccion.Text = "Mostrar Dirección";
             }
+        }
+
+        protected void btnEliminarTodo_Click(object sender, EventArgs e)
+        {
+            DataTable dt = sessionSelecciones._dataTable;
+            dt.Rows.Clear();
+            dt.AcceptChanges();
+            sessionSelecciones._dataTable = dt;
+            gvSucursalesSeleccionadas.DataSource = dt;
+            gvSucursalesSeleccionadas.DataBind();
+
+            btnEliminarTodo.Visible = false;
+            btnMostrarDireccion.Visible = false;
+
+            lblMensaje.Visible = true;
         }
     }
 }
