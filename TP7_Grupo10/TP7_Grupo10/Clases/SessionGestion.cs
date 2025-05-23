@@ -60,6 +60,10 @@ namespace TP7_Grupo10.Clases
             columna = new DataColumn("DESCRIPCIÓN", System.Type.GetType("System.String"));
             tabla.Columns.Add(columna);
 
+
+            columna = new DataColumn("DIRECCIÓN", System.Type.GetType("System.String"));
+            tabla.Columns.Add(columna);
+
             return tabla;
         }
         
@@ -75,7 +79,8 @@ namespace TP7_Grupo10.Clases
 
             filaNueva["ID SUCURSAL"] = sucursal.IdSucursal;
             filaNueva["NOMBRE"] = sucursal.nombreSucursal;
-            filaNueva["DESCRIPCIÓN"] = sucursal.nombreSucursal;
+            filaNueva["DESCRIPCIÓN"] = sucursal.descripcionSucursal;
+            filaNueva["DIRECCIÓN"] = sucursal.direccionSucursal;
 
             dataTable.Rows.Add(filaNueva);
 

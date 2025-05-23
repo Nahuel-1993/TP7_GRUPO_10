@@ -89,6 +89,21 @@
     asp\:Button:hover, input[type="submit"]:hover {
         background-color: #005fa3;
     }
+    .auto-style6 {
+        width: 114%;
+    }
+    .auto-style7 {
+        width: 256px;
+    }
+    .auto-style8 {
+        width: 144px;
+    }
+    .auto-style10 {
+        margin-left: 71px;
+    }
+    .auto-style11 {
+        width: 377px;
+    }
 </style>
 </head>
 <body>
@@ -134,7 +149,20 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
+                    <table class="auto-style6">
+                        <tr>
+                            <td class="auto-style7">
                     <asp:Label ID="lblMensaje" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                            </td>
+                            <td class="auto-style8">
+                                <asp:Button ID="btnMostrarDireccion" runat="server" OnClick="btnMostrarDireccion_Click" Text="Mostrar Dirección" CssClass="auto-style10" />
+                            </td>
+                            <td class="auto-style11">
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -145,11 +173,31 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:GridView ID="gvSucursalesSeleccionadas" runat="server" OnRowCommand="gvSucursalesSeleccionadas_RowCommand">
+                    <asp:GridView ID="gvSucursalesSeleccionadas" runat="server" OnRowCommand="gvSucursalesSeleccionadas_RowCommand" AutoGenerateColumns="False">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnEliminar" runat="server" CommandArgument="<%# Container.DataItemIndex %>" CommandName="Eliminar" Text="Eliminar" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ID SUCURSAL">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_it_IdSucursal" runat="server" Text='<%# Eval("ID SUCURSAL") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="NOMBRE">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_it_NombreSucursal" runat="server" Text='<%# Eval("NOMBRE") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="DESCRIPCIÓN">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_it_DescripcionSucursal" runat="server" Text='<%# Eval("DESCRIPCIÓN") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="DIRECCIÓN">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_it_DireccionSucursal" runat="server" Text='<%# Eval("DIRECCIÓN") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

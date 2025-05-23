@@ -14,7 +14,7 @@ namespace TP7_Grupo10
         private SessionGestion sessionSelecciones;
         private Sucursal sucursal;
 
-        private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]";
+        private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal], [DireccionSucursal] FROM [Sucursal]";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -105,6 +105,7 @@ namespace TP7_Grupo10
                 sucursal.IdSucursal = Convert.ToInt32(datos[0]);
                 sucursal.nombreSucursal = datos[1];
                 sucursal.descripcionSucursal = datos[2];
+                sucursal.direccionSucursal = datos[3];
 
                 if (sessionSelecciones.AgregarFila(sucursal))
                 {
