@@ -97,7 +97,7 @@ namespace TP7_Grupo10
                 lblSeleccionados.Text = string.Empty;
             }
 
-                txtNombreSucursal.Text = string.Empty;
+            txtNombreSucursal.Text = string.Empty;
         }
 
         protected void bSeleccionar_Command(object sender, CommandEventArgs e)
