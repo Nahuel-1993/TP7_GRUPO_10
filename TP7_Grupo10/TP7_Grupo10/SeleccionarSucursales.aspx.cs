@@ -23,15 +23,14 @@ namespace TP7_Grupo10
             if (!IsPostBack)
             {
                 SqlDataSourceSucursales.SelectCommand = ConsultaBase;
-                
+
+                lblSeleccionados.Text = "Usted está viendo todas las sucursales";
             }
             else if (ViewState["FiltroProvincia"] != null)
             {
                 SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + ViewState["FiltroProvincia"].ToString();
                 SqlDataSourceSucursales.DataBind();
             }
-
-            lblSeleccionados.Text = string.Empty;
         }
 
         protected void Provincia_Command(object sender, CommandEventArgs e)
@@ -89,8 +88,16 @@ namespace TP7_Grupo10
                 dataPager.SetPageProperties(0, dataPager.PageSize, true);
             }
 
-            txtNombreSucursal.Text = string.Empty;
-            lblSeleccionados.Text = string.Empty;
+            if (txtNombreSucursal.Text.Trim().Length == 0)
+            {
+                lblSeleccionados.Text = "Usted está viendo todas las sucursales";
+            }
+            else
+            {
+                lblSeleccionados.Text = string.Empty;
+            }
+
+                txtNombreSucursal.Text = string.Empty;
         }
 
         protected void bSeleccionar_Command(object sender, CommandEventArgs e)
