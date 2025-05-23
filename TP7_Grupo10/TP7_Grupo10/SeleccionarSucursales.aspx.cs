@@ -51,6 +51,8 @@ namespace TP7_Grupo10
                 SqlDataSourceSucursales.SelectCommand = ConsultaBase + " " + ViewState["FiltroProvincia"].ToString();
                 SqlDataSourceSucursales.DataBind();
 
+                lblSeleccionados.Text = "Sucursales filtradas por la provincia de: " + ObtenerNombreProvinciaPorId(Convert.ToInt32(e.CommandArgument));
+
                 // Reinicia la paginación del ListView
                 DataPager dataPager = lvSucursales.FindControl("DataPager1") as DataPager;
                 
@@ -114,6 +116,21 @@ namespace TP7_Grupo10
                 }
 
             }
+        }
+       
+        private string ObtenerNombreProvinciaPorId(int idProvincia)
+        {
+            string nombreProvincia;
+            
+            SqDS_Provincias.SelectCommand = "SELECT DescripcionProvincia FROM Provincia WHERE Id_Provincia = @IdProvincia";
+            SqDS_Provincias.SelectParameters.Clear();
+            SqDS_Provincias.SelectParameters.Add("IdProvincia", idProvincia.ToString());
+
+            var nombre = SqDS_Provincias.Select(DataSourceSelectArguments.Empty) as System.Data.DataView;
+
+            nombreProvincia = nombre.ToString();
+
+           return nombreProvincia;
         }
     }
 }
