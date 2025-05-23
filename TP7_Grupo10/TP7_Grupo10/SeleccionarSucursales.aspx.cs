@@ -94,7 +94,7 @@ namespace TP7_Grupo10
             }
             else
             {
-                lblSeleccionados.Text = string.Empty;
+                lblSeleccionados.Text = "Resultados de su búsqueda:";
             }
 
             txtNombreSucursal.Text = string.Empty;
