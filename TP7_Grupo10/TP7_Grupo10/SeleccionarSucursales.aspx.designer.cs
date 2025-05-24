@@ -96,13 +96,31 @@ namespace TP7_Grupo10
         protected global::System.Web.UI.WebControls.Label lblSeleccionados;
 
         /// <summary>
-        /// Control lvSucursales.
+        /// Control updMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvSucursales;
+        protected global::System.Web.UI.UpdatePanel updMensaje;
+
+        /// <summary>
+        /// Control tMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.Timer tMensaje;
+
+        /// <summary>
+        /// Control smMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager smMensaje;
 
         /// <summary>
         /// Control lblMensaje.
@@ -112,6 +130,15 @@ namespace TP7_Grupo10
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensaje;
+
+        /// <summary>
+        /// Control lvSucursales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvSucursales;
 
         /// <summary>
         /// Control SqlDataSourceSucursales.

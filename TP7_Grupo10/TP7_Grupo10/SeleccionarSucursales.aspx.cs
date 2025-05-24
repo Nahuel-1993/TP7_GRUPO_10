@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Timers;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TP7_Grupo10.Clases;
@@ -13,6 +15,7 @@ namespace TP7_Grupo10
     {
         private SessionGestion sessionSelecciones;
         private Sucursal sucursal;
+
 
         private const string ConsultaBase = "SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [Id_ProvinciaSucursal], [URL_Imagen_Sucursal], [DireccionSucursal] FROM [Sucursal]";
 
@@ -129,12 +132,42 @@ namespace TP7_Grupo10
 
         protected void btnEliminarFiltro_Click(object sender, EventArgs e)
         {
-            //Hago de nuevo la consulta base y la bindeo
-            SqlDataSourceSucursales.SelectCommand = ConsultaBase;
-            SqlDataSourceSucursales.DataBind();
+            // Verifica si hay un filtro aplicado por provincia
+            if (ViewState["FiltroProvincia"] != null)
+            {
+                ViewState["FiltroProvincia"] = null;
+                SqlDataSourceSucursales.SelectCommand = ConsultaBase;
+                SqlDataSourceSucursales.DataBind();
 
-            //Mensaje de que vuelve a ver todas las sucursales
-            lblSeleccionados.Text = "Usted está viendo todas las sucursales";
+                lblSeleccionados.Text = "Usted está viendo todas las sucursales";
+            }
+
+            else
+            {
+                MostrarMensajeTemporal(3000);
+
+
+            }
+        }
+
+        private void MostrarMensajeTemporal(int duracionMs = 3000)
+        {
+            lblMensaje.Visible = true;
+            //Establese el t
+            tMensaje.Interval = duracionMs;
+            //Habilita el timer
+            tMensaje.Enabled = true;
+            //Fuerza la actualización del UpdatePanel para que se vea el mensaje inmediatamente
+            updMensaje.Update(); 
+        }
+
+
+        protected void tMensaje_Tick(object sender, EventArgs e)
+        {
+            //Oculta el label
+            lblMensaje.Visible = false;
+            //Deshabilita el timer para que no siga haciendo Tick
+            tMensaje.Enabled = false;  
         }
     }
 }

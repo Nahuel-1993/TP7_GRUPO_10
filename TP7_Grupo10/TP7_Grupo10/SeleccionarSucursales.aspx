@@ -212,6 +212,16 @@
                         <asp:Label ID="lblSeleccionados" runat="server"></asp:Label>
                         <br />
                         <br />
+                        <asp:UpdatePanel ID="updMensaje" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Timer ID="tMensaje" runat="server" Enabled="False" Interval="40000" OnTick="tMensaje_Tick">
+                                </asp:Timer>
+                                <asp:ScriptManager ID="smMensaje" runat="server">
+                                </asp:ScriptManager>
+                                <asp:Label ID="lblMensaje" runat="server" Visible="False">(No se esta aplicando ningun filtro de provincia en este momento)</asp:Label>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <br />
                         <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSourceSucursales" GroupItemCount="3" DataKeyNames="Id_Sucursal" style="margin-bottom: 0px">
 
                             <%--<AlternatingItemTemplate>
@@ -357,8 +367,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style5">
                         <asp:SqlDataSource ID="SqlDataSourceSucursales" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal], [Id_Sucursal], [Id_ProvinciaSucursal], [DireccionSucursal] FROM [Sucursal]"></asp:SqlDataSource>
