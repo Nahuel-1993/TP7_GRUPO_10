@@ -126,5 +126,15 @@ namespace TP7_Grupo10
                 }
             }
         }
+
+        protected void btnEliminarFiltro_Click(object sender, EventArgs e)
+        {
+            //Hago de nuevo la consulta base y la bindeo
+            SqlDataSourceSucursales.SelectCommand = ConsultaBase;
+            SqlDataSourceSucursales.DataBind();
+
+            //Mensaje de que vuelve a ver todas las sucursales
+            lblSeleccionados.Text = "Usted está viendo todas las sucursales";
+        }
     }
 }

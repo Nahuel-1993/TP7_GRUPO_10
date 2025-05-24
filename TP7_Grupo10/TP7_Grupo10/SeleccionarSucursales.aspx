@@ -194,6 +194,9 @@
                 <tr>
                     <td class="auto-style30">
                         <asp:DataList ID="dl_ProvinciasSucursales" runat="server" DataSourceID="SqDS_Provincias" ClientIDMode="Static">
+                            <FooterTemplate>
+                                <asp:Button ID="btnEliminarFiltro" runat="server" OnClick="btnEliminarFiltro_Click" Text="Eliminar filtro" />
+                            </FooterTemplate>
                             <ItemTemplate>
                                 <asp:Button ID="Provincia" runat="server" CommandArgument='<%# Eval("Id_Provincia") %>' CommandName="FiltroProvincias" OnCommand="Provincia_Command" Text='<%# Eval("DescripcionProvincia") %>' Height="35px" Width="202px" />
                                 <br />
