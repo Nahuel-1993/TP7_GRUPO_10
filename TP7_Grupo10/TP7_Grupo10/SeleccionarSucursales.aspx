@@ -218,7 +218,7 @@
                                 </asp:Timer>
                                 <asp:ScriptManager ID="smMensaje" runat="server">
                                 </asp:ScriptManager>
-                                <asp:Label ID="lblMensaje" runat="server" Visible="False">(No se esta aplicando ningun filtro de provincia en este momento)</asp:Label>
+                                <asp:Label ID="lblMensaje" runat="server" Visible="False">(No se está filtrando por ninguna provincia actualmente)</asp:Label>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                         <br />

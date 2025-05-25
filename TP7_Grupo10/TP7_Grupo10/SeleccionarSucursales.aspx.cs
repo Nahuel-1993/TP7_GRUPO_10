@@ -153,7 +153,7 @@ namespace TP7_Grupo10
         private void MostrarMensajeTemporal(int duracionMs = 3000)
         {
             lblMensaje.Visible = true;
-            //Establese el t
+            //Establese el tiempo de duración del mensaje
             tMensaje.Interval = duracionMs;
             //Habilita el timer
             tMensaje.Enabled = true;
