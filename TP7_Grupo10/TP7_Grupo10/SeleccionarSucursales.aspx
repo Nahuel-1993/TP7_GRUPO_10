@@ -120,6 +120,7 @@
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        vertical-align: top !important;
     }
 
     .auto-style35 .aspNet-Label {
