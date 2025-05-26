@@ -94,6 +94,7 @@ namespace TP7_Grupo10
             if (txtNombreSucursal.Text.Trim().Length == 0)
             {
                 lblSeleccionados.Text = "Usted está viendo todas las sucursales";
+                MostrarMensajeTemporal(3000);
             }
             else
             {
@@ -140,13 +141,18 @@ namespace TP7_Grupo10
                 SqlDataSourceSucursales.DataBind();
 
                 lblSeleccionados.Text = "Usted está viendo todas las sucursales";
-            }
 
+                // Reinicia la paginación del ListView
+                DataPager dataPager = lvSucursales.FindControl("DataPager1") as DataPager;
+
+                if (dataPager != null)
+                {
+                    dataPager.SetPageProperties(0, dataPager.PageSize, true);
+                }
+            }
             else
             {
                 MostrarMensajeTemporal(3000);
-
-
             }
         }
 
