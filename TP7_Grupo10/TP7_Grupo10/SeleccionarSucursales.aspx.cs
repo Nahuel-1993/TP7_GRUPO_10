@@ -167,7 +167,6 @@ namespace TP7_Grupo10
             updMensaje.Update(); 
         }
 
-
         protected void tMensaje_Tick(object sender, EventArgs e)
         {
             //Oculta el label

@@ -17,7 +17,8 @@
     .auto-style1 {
         width: 100%;
         margin-bottom: 20px;
-    }
+            height: 85px;
+        }
 
     table {
         border-collapse: collapse;
@@ -114,12 +115,6 @@
         width: 18px;
     }
 
-    .auto-style20 {
-        margin: 0 auto;
-        max-width: 800px;
-        text-align: center;
-    }
-
     .auto-style32 {
         background-color: white;
         border-radius: 8px;
@@ -131,7 +126,19 @@
         display: block;
         margin-top: 5px;
     }
-</style>
+        .auto-style36 {
+            width: 100%;
+        }
+        .auto-style38 {
+            width: 176px;
+        }
+        .auto-style39 {
+            width: 299px;
+        }
+        .auto-style40 {
+            width: 240px;
+        }
+    </style>
 
 </head>
 <body>
@@ -139,13 +146,21 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style13"></td>
-                    <td class="auto-style14">
-                        <asp:HyperLink ID="hpListadoDeSucursales" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
-                    </td>
-                    <td class="auto-style15">&nbsp;</td>
                     <td>
-                        <asp:HyperLink ID="hpMostrarSucursalesSeleccionadas" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionadas.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
+                        <asp:Panel ID="Panel1" runat="server">
+                            <table class="auto-style36">
+                                <tr>
+                                    <td class="auto-style40">&nbsp;</td>
+                                    <td class="auto-style38">
+                                        <asp:HyperLink ID="hpListadoDeSucursales" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
+                                    </td>
+                                    <td class="auto-style39">&nbsp;</td>
+                                    <td>
+                                        <asp:HyperLink ID="hpMostrarSucursalesSeleccionadas" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionadas.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
                     </td>
                 </tr>
             </table>
@@ -414,12 +429,5 @@
             </table>
         </div>
     </form>
-    <p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </p>
-    <p class="auto-style20">
-        &nbsp;</p>
 </body>
 </html>
-   width: 187px;
-         
